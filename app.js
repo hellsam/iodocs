@@ -119,22 +119,22 @@ app.configure(function() {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser());
-if(config.redis) {
-    app.use(express.session({
-        secret: config.sessionSecret,
-        store:  new RedisStore({
-            'host':   config.redis.host,
-            'port':   config.redis.port,
-            'pass':   config.redis.password,
-            'db'  :   config.redis.database,
-            'maxAge': 1209600000
-        })
-    }));
-} else {
+// if(config.redis) {
+//     app.use(express.session({
+//         secret: config.sessionSecret,
+//         store:  new RedisStore({
+//             'host':   config.redis.host,
+//             'port':   config.redis.port,
+//             'pass':   config.redis.password,
+//             'db'  :   config.redis.database,
+//             'maxAge': 1209600000
+//         })
+//     }));
+// } else {
     app.use(express.session({
         secret: config.sessionSecret
     }));
-} 
+// } 
 
     // Global basic authentication on server (applied if configured)
     if (config.basicAuth && config.basicAuth.username && config.basicAuth.password) {
